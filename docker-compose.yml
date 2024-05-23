@@ -13,4 +13,4 @@ services:
       - ./update.sh:/home/ubuntu/selfmade-pipeline/auto-deploy-website/update.sh
     environment:
       - WEBHOOKS=/etc/webhook/hooks.json
-    command: ["/start.sh"]
+    command: ["/bin/bash", "/start.sh"]
