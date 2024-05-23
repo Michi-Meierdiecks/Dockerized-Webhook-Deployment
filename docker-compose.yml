@@ -1,14 +1,16 @@
-
-#### docker-compose.yml
-```yaml
 version: '3.8'
 
 services:
-  webhookd:
+  webhook:
     build: .
-    ports:
-      - "80:80"
-      - "8080:8080"
-    volumes:
-      - ./webhooks:/home/ubuntu/webhooks
     container_name: webhookd-deploy
+    ports:
+      - "8080:8080"
+      - "80:80"
+    volumes:
+      - ./hooks.json:/etc/webhook/hooks.json
+      - ./start.sh:/start.sh
+      - ./update.sh:/home/ubuntu/selfmade-pipeline/auto-deploy-website/update.sh
+    environment:
+      - WEBHOOKS=/etc/webhook/hooks.json
+    command: ["/start.sh"]
