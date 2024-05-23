@@ -7,7 +7,7 @@ RUN apt-get update && \
 RUN wget https://github.com/adnanh/webhook/releases/download/2.8.0/webhook-linux-amd64.tar.gz && \
     tar -xzf webhook-linux-amd64.tar.gz && \
     mv webhook-linux-amd64/webhook /usr/local/bin/webhook && \
-    rm -rf webhook-linux-amd64*
+    rm -rf webhook-linux-amd64 webhook-linux-amd64.tar.gz
 
 RUN mkdir -p /home/ubuntu/selfmade-pipeline/auto-deploy-website /home/ubuntu/webhooks
 
@@ -21,6 +21,4 @@ COPY start.sh /start.sh
 
 RUN chmod +x /home/ubuntu/selfmade-pipeline/auto-deploy-website/update.sh /start.sh
 
-EXPOSE 80 8080
-
-CMD ["/start.sh"]
+ENTRYPOINT ["/start.sh"]
