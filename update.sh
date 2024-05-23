@@ -1,8 +1,9 @@
 #!/bin/bash
 
 cd /home/ubuntu/selfmade-pipeline/auto-deploy-website
-git pull
 
-cp -r /home/ubuntu/selfmade-pipeline/auto-deploy-website/* /var/www/html/
+git pull origin main
 
-service apache2 restart
+sudo cp -r * /var/www/html/
+
+sudo systemctl restart apache2
