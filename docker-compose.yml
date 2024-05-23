@@ -5,12 +5,12 @@ services:
     build: .
     container_name: webhookd-deploy
     ports:
-      - "8080:8080"
-      - "80:80"
+      - "8080:80"
+      - "9000:9000"
     volumes:
       - ./hooks.json:/etc/webhook/hooks.json
       - ./start.sh:/start.sh
       - ./update.sh:/home/ubuntu/selfmade-pipeline/auto-deploy-website/update.sh
     environment:
       - WEBHOOKS=/etc/webhook/hooks.json
-    command: ["/bin/bash", "/start.sh"]
+    command: ["/start.sh"]
