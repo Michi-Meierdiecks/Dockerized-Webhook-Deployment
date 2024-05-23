@@ -1,0 +1,8 @@
+[
+    {
+        "id": "deploy",
+        "execute-command": "/home/ubuntu/selfmade-pipeline/auto-deploy-website/update.sh",
+        "command-working-directory": "/home/ubuntu/selfmade-pipeline/auto-deploy-website",
+        "response-message": "Webhook triggered."
+    }
+]
