@@ -4,4 +4,4 @@
 service apache2 start
 
 # Start webhook
-webhook -hooks /home/ubuntu/webhooks/hooks.json -verbose
+webhook -hooks /home/ubuntu/webhooks/hooks.json -port 9000
