@@ -15,11 +15,7 @@ Dieses Repository bietet eine Lösung zur automatisierten Bereitstellung von Web
 
     ```bash
     sudo apt-get update
-    sudo apt-get install \
-        ca-certificates \
-        curl \
-        gnupg \
-        lsb-release
+    sudo apt-get install \ca-certificates \curl \gnupg \lsb-release
     ```
 
 2. **Docker's offizieller GPG-Schlüssel hinzufügen:**
@@ -82,6 +78,8 @@ Dieses Repository bietet eine Lösung zur automatisierten Bereitstellung von Web
 2. **Passen Sie die `docker-compose.yml`-Datei an:**
 
     Bearbeiten Sie die `docker-compose.yml`-Datei und fügen Sie Ihr eigenes Repository hinzu, indem Sie die Umgebungsvariable `USER_REPO` setzen:
+   ```bash
+   sudo nano docker-compose.yml
 
     ```yaml
     version: '3.8'
@@ -96,7 +94,7 @@ Dieses Repository bietet eine Lösung zur automatisierten Bereitstellung von Web
           - USER_REPO=https://github.com/IhrBenutzername/IhrRepository.git
     ```
 
-3. **Starten Sie die Docker-Container:**
+4. **Starten Sie die Docker-Container:**
 
     ```bash
     sudo docker-compose up -d --build
