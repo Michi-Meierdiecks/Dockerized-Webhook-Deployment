@@ -1,9 +1,8 @@
 [
     {
-      "id": "deploy",
-      "execute-command": "/home/ubuntu/selfmade-pipeline/auto-deploy-website/update.sh",
-      "command-working-directory": "/home/ubuntu/selfmade-pipeline/auto-deploy-website",
-      "response-message": "Deployment started"
+      "id": "update-site",
+      "execute-command": "/home/ubuntu/Dockerized-Webhook-Deployment/update.sh",
+      "command-working-directory": "/home/ubuntu/Dockerized-Webhook-Deployment"
     }
   ]
   

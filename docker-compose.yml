@@ -6,7 +6,6 @@ services:
     ports:
       - "80:80"
       - "9000:9000"
+    container_name: webhookd-deploy
     volumes:
-      - /var/www/html
-    environment:
-      - GIT_REPO=https://github.com/Michi-Meierdiecks/auto-deploy-website.git
+      - .:/home/ubuntu/webhooks

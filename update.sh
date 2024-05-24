@@ -1,6 +1,4 @@
 #!/bin/bash
-
-cd /home/ubuntu/selfmade-pipeline/auto-deploy-website
+cd /home/ubuntu/Dockerized-Webhook-Deployment
 git pull origin main
-cp index.html /var/www/html/
-service apache2 restart
+sudo systemctl restart apache2

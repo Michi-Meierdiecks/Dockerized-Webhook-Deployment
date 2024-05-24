@@ -1,42 +1,39 @@
 #!/bin/bash
 
-# Aktualisiere die Paketliste und installiere benötigte Pakete
+# Update package list and install necessary packages
 sudo apt update
 sudo apt install apt-transport-https ca-certificates curl software-properties-common git -y
 
-# Füge den Docker GPG-Schlüssel hinzu
+# Add Docker's official GPG key
 curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /usr/share/keyrings/docker-archive-keyring.gpg
 
-# Füge das Docker Repository hinzu
+# Add Docker's APT repository
 echo "deb [arch=amd64 signed-by=/usr/share/keyrings/docker-archive-keyring.gpg] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable" | sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
 
-# Aktualisiere die Paketliste erneut
+# Update package list again
 sudo apt update
 
-# Installiere Docker
-sudo apt install docker-ce -y
+# Install Docker
+sudo apt install docker-ce docker-ce-cli containerd.io -y
 
-# Starte den Docker-Dienst und aktiviere ihn, damit er beim Booten startet
+# Start Docker service and enable it to start on boot
 sudo systemctl start docker
 sudo systemctl enable docker
 
-# Füge den aktuellen Benutzer zur Docker-Gruppe hinzu
+# Add current user to the Docker group
 sudo usermod -aG docker $USER
 
-# Setze die Firewall-Regeln, um Port 8080 und Port 80 freizugeben
-sudo ufw allow 8080
-sudo ufw allow 80
+# Allow port 9000 through the firewall
+sudo ufw allow 9000
 
-# Aktualisiere die Gruppenzugehörigkeit im laufenden Terminal
+# Apply new group membership
 newgrp docker
 
-# Installiere Docker Compose
-sudo curl -L "https://github.com/docker/compose/releases/download/v2.5.0/docker-compose-$(uname -s)-$(uname -m)" -o /usr/local/bin/docker-compose
-sudo chmod +x /usr/local/bin/docker-compose
-
-# Klone das Git-Repository
+# Clone the repository and start the Docker container
 git clone https://github.com/Michi-Meierdiecks/Dockerized-Webhook-Deployment.git
 cd Dockerized-Webhook-Deployment
 
-# Baue und starte das Docker-Compose Projekt
-docker-compose up -d --build
+# Build and run the Docker container
+sudo docker-compose up -d --build
+
+echo "Setup complete. Please log out and log back in to apply Docker group changes."
