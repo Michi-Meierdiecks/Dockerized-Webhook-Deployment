@@ -3,11 +3,8 @@ version: '3.8'
 services:
   webhook:
     build: .
-    container_name: webhookd-deploy
     ports:
       - "80:80"
       - "9000:9000"
-      
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-      - ./update.sh:/home/ubuntu/Dockerized-Webhook-Deployment/update.sh
+    environment:
+      - USER_REPO=https://github.com/Benutzername/Repository.git
