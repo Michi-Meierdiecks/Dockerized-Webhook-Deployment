@@ -5,8 +5,9 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 RUN wget https://github.com/adnanh/webhook/releases/download/2.8.0/webhook-linux-amd64.tar.gz && \
-    tar -zxvf webhook-linux-amd64.tar.gz && \
-    mv webhook-linux-amd64/webhook /usr/local/bin/webhook
+    tar -xzvf webhook-linux-amd64.tar.gz && \
+    mv webhook-linux-amd64/webhook /usr/local/bin/webhook && \
+    rm -rf webhook-linux-amd64*
 
 RUN mkdir -p /home/ubuntu/webhooks
 
@@ -14,9 +15,8 @@ WORKDIR /home/ubuntu/webhooks
 
 COPY hooks.json /home/ubuntu/webhooks/hooks.json
 COPY start.sh /start.sh
+COPY update.sh /home/ubuntu/Dockerized-Webhook-Deployment/update.sh
 
-RUN chmod +x /start.sh
-
-EXPOSE 80 9000
+RUN chmod +x /start.sh /home/ubuntu/Dockerized-Webhook-Deployment/update.sh
 
 CMD ["/start.sh"]
