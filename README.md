@@ -1,12 +1,16 @@
-# Dockerized Webhook Deployment
+# Docker Deployment Script
 
-Dieses Repository stellt ein einfaches Skript zur Verfügung, um Docker, Docker Compose und das Webhook-Deployment-Projekt zu installieren und zu konfigurieren.
+Dieses Skript installiert Docker, konfiguriert die Firewall, klont ein Git-Repository und startet einen Docker-Container.
 
 ## Anleitung
 
-1. Klonen Sie dieses Repository:
+1. **EC2-Instanz vorbereiten:**
+   - Melden Sie sich bei Ihrer EC2-Instanz an.
 
-   ```bash
-   git clone https://github.com/Michi-Meierdiecks/Dockerized-Webhook-Deployment.git
-   cd Dockerized-Webhook-Deployment
+2. **Installationsskript ausführen:**
 
+```sh
+# Installationsskript herunterladen und ausführen
+wget https://raw.githubusercontent.com/Michi-Meierdiecks/docker-deplay-puplic/main/install.sh
+chmod +x install.sh
+./install.sh
