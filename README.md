@@ -50,6 +50,13 @@ Dieses Projekt bietet eine einfache Möglichkeit, einen Docker-Container zu erst
       REPO_URL: "https://github.com/IhrBenutzername/IhrRepository.git"
       REPO_BRANCH: "main"
     ```
+**Webhook URL einrichten**
+
+    Setze die `Payload URL` auf:
+    ```
+    http://<your-server-ip>:9000/hooks/update-site
+    ```
+    Ersetze `<your-server-ip>` mit der IP-Adresse deines Servers.
 
 4. **Webseite aufrufen:**
 
